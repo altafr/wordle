@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A focused Wordle-style word guessing game." />
+    <title>Wordle / Five</title>
+    <link rel="stylesheet" href="styles.css?v=2" />
+  </head>
+  <body>
+    <main class="game-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">DAILY WORD PUZZLE</p>
+          <h1>Wordle<span>/five</span></h1>
+        </div>
+        <div class="header-actions">
+          <button class="icon-button" id="theme-toggle" type="button" aria-label="Switch to light mode" title="Switch to light mode">☼</button>
+          <button class="icon-button" id="sound-toggle" type="button" aria-label="Mute sound" title="Mute sound">♪</button>
+          <button class="icon-button" id="new-game" type="button" aria-label="Start a new game" title="New game">↻</button>
+        </div>
+      </header>
+
+      <section class="status-panel" aria-live="polite">
+        <div class="status-copy">
+          <p class="status-kicker">CURRENT ROUND</p>
+          <p id="message">Find the hidden word in six tries.</p>
+        </div>
+        <div class="round-stats">
+          <div class="timer" aria-live="polite"><span id="timer">03:00</span><small>TIME</small></div>
+          <div class="attempt-count"><span id="attempts">0</span><small>/ 6</small></div>
+        </div>
+      </section>
+
+      <aside class="clue-card" role="note" aria-live="polite" aria-labelledby="clue-title">
+        <div class="clue-mark" aria-hidden="true">?</div>
+        <div>
+          <p class="status-kicker" id="clue-title">CLUE</p>
+          <p id="clue">A sentence clue will appear when the round begins.</p>
+        </div>
+      </aside>
+
+      <section class="board" id="board" aria-label="Guess board"></section>
+
+      <section class="keyboard" id="keyboard" aria-label="On-screen keyboard"></section>
+
+      <button class="reveal-button" id="reveal-word" type="button">Reveal word <span>0 points</span></button>
+
+      <footer class="footer-note">
+        <span>STANDARD DICTIONARY</span>
+        <span class="dot">•</span>
+        <span>5 LETTERS</span>
+      </footer>
+
+      <section class="leaderboard" aria-labelledby="leaderboard-title">
+        <div class="leaderboard-heading">
+          <div>
+            <p class="eyebrow">LOCAL SCOREBOARD</p>
+            <h2 id="leaderboard-title">Leaderboard</h2>
+          </div>
+          <span class="leaderboard-note">wins · best tries</span>
+        </div>
+        <ol id="leaderboard-list" class="leaderboard-list"></ol>
+      </section>
+    </main>
+
+    <dialog class="result-dialog" id="result-dialog" aria-labelledby="result-title">
+      <button class="dialog-close" id="close-dialog" type="button" aria-label="Close">×</button>
+      <p class="eyebrow">ROUND COMPLETE</p>
+      <h2 id="result-title">Nice work.</h2>
+      <p id="result-copy"></p>
+      <button class="primary-button" id="play-again" type="button">Play again</button>
+    </dialog>
+
+    <dialog class="welcome-dialog" id="welcome-dialog" aria-labelledby="welcome-title">
+      <p class="eyebrow">WELCOME TO WORDLE / FIVE</p>
+      <h2 id="welcome-title">Ready to play?</h2>
+      <p>Tell us your name and we’ll keep your round personal.</p>
+      <label for="player-name">Your name</label>
+      <input id="player-name" name="player-name" autocomplete="name" maxlength="24" placeholder="e.g. Alex" />
+      <button class="primary-button" id="start-game" type="button">Start playing</button>
+    </dialog>
+
+    <div class="confetti-layer" id="confetti" aria-hidden="true"></div>
+
+    <script src="dictionary.js?v=2"></script>
+    <script src="app.js?v=8"></script>
+  </body>
+</html>
